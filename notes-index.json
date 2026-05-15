@@ -25,6 +25,19 @@
     "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/lua-101.md"
   },
   {
+    "slug": "vite-env",
+    "title": "Vite Env",
+    "description": "Env management in a vite application",
+    "date": "2026-05-15",
+    "tags": [
+      "react",
+      "vite",
+      "env"
+    ],
+    "path": "publish/vite-env.md",
+    "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/vite-env.md"
+  },
+  {
     "slug": "http",
     "title": "HTTP",
     "description": "Hyper Text Transfer Protocal",
