@@ -10,5 +10,18 @@
     ],
     "path": "publish/example-note.md",
     "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/example-note.md"
+  },
+  {
+    "slug": "http",
+    "title": "HTTP",
+    "description": "Hyper Text Transfer Protocal",
+    "date": "2022-01-01",
+    "tags": [
+      "http",
+      "networking",
+      "protocol"
+    ],
+    "path": "publish/http.md",
+    "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/http.md"
   }
 ]
