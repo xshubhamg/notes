@@ -1,0 +1,51 @@
+# Copy into your Obsidian notes repo as .github/workflows/publish-notes.yml
+#
+# Required secrets (notes repo):
+#   NOTES_REVALIDATE_SECRET — same value as on the portfolio site
+#
+# Optional secrets:
+#   PORTFOLIO_REVALIDATE_URL — default: https://xshubhamg.site/api/revalidate-notes
+
+name: Publish notes index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "publish/**"
+      - "notes-index.json"
+      - "scripts/generate-index.ts"
+      - ".github/workflows/publish-notes.yml"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Generate notes-index.json
+        run: bun run scripts/generate-index.ts
+
+      - name: Commit index if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add notes-index.json
+          git diff --staged --quiet || git commit -m "chore: update notes-index.json"
+          git push
+
+      - name: Revalidate portfolio notes cache
+        if: env.NOTES_REVALIDATE_SECRET != ''
+        env:
+          NOTES_REVALIDATE_SECRET: ${{ secrets.NOTES_REVALIDATE_SECRET }}
+          PORTFOLIO_REVALIDATE_URL: ${{ secrets.PORTFOLIO_REVALIDATE_URL }}
+        run: |
+          URL="${PORTFOLIO_REVALIDATE_URL:-https://xshubhamg.site/api/revalidate-notes}"
+          curl -fsS -X POST "$URL" \
+            -H "Authorization: Bearer $NOTES_REVALIDATE_SECRET" \
+            -H "Content-Type: application/json"
