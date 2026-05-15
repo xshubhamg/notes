@@ -2,6 +2,9 @@
 title: HTTP
 description: Hyper Text Transfer Protocal
 date: 2022-01-01
+published: true
+tags: ['http', 'networking', 'protocol']
+slug: http
 ---
 
 ## Jargon's related to HTTP protocol
