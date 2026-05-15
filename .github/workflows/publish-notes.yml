@@ -40,7 +40,7 @@ jobs:
           git push
 
       - name: Revalidate portfolio notes cache
-        if: ${{ secrets.NOTES_REVALIDATE_SECRET != '' }}
+        if: ${{ env.NOTES_REVALIDATE_SECRET != '' }}
         env:
           NOTES_REVALIDATE_SECRET: ${{ secrets.NOTES_REVALIDATE_SECRET }}
           PORTFOLIO_REVALIDATE_URL: ${{ secrets.PORTFOLIO_REVALIDATE_URL }}
