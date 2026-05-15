@@ -12,6 +12,19 @@
     "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/example-note.md"
   },
   {
+    "slug": "lua-101",
+    "title": "Lua 101",
+    "description": "A crash course on lua programming language",
+    "date": "2026-05-15",
+    "tags": [
+      "lua",
+      "neovim",
+      "language"
+    ],
+    "path": "publish/lua-101.md",
+    "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/lua-101.md"
+  },
+  {
     "slug": "http",
     "title": "HTTP",
     "description": "Hyper Text Transfer Protocal",
