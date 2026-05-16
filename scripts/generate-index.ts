@@ -2,8 +2,6 @@
 /**
  * Generates notes-index.json from published Markdown in the Obsidian notes repo.
  *
- * Copy this script (and the GitHub workflow) into your notes repository root.
- *
  * Env (optional):
  *   NOTES_PUBLISH_DIR   default: publish
  *   NOTES_GITHUB_OWNER  default: xshubhamg
@@ -12,14 +10,13 @@
  *   NOTES_OUTPUT_FILE   default: notes-index.json
  */
 
-import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative, basename, extname } from "node:path";
 
-const PUBLISH_DIR = process.env.NOTES_PUBLISH_DIR ?? "publish";
-const GITHUB_OWNER = process.env.NOTES_GITHUB_OWNER ?? "xshubhamg";
-const GITHUB_REPO = process.env.NOTES_GITHUB_REPO ?? "notes";
-const GITHUB_BRANCH = process.env.NOTES_GITHUB_BRANCH ?? "main";
-const OUTPUT_FILE = process.env.NOTES_OUTPUT_FILE ?? "notes-index.json";
+const PUBLISH_DIR = Bun.env.NOTES_PUBLISH_DIR ?? "publish";
+const GITHUB_OWNER = Bun.env.NOTES_GITHUB_OWNER ?? "xshubhamg";
+const GITHUB_REPO = Bun.env.NOTES_GITHUB_REPO ?? "notes";
+const GITHUB_BRANCH = Bun.env.NOTES_GITHUB_BRANCH ?? "main";
+const OUTPUT_FILE = Bun.env.NOTES_OUTPUT_FILE ?? "notes-index.json";
 
 type Frontmatter = Record<string, unknown>;
 
@@ -89,22 +86,6 @@ function rawUrlForPath(repoPath: string): string {
   return `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${repoPath.replace(/\\/g, "/")}`;
 }
 
-async function collectMarkdownFiles(dir: string): Promise<string[]> {
-  const entries = await readdir(dir, { withFileTypes: true });
-  const files: string[] = [];
-
-  for (const entry of entries) {
-    const fullPath = join(dir, entry.name);
-    if (entry.isDirectory()) {
-      files.push(...(await collectMarkdownFiles(fullPath)));
-    } else if (entry.isFile() && entry.name.endsWith(".md")) {
-      files.push(fullPath);
-    }
-  }
-
-  return files;
-}
-
 function isPublished(frontmatter: Frontmatter): boolean {
   if (frontmatter.published === false) return false;
   if (frontmatter.published === "false") return false;
@@ -124,11 +105,12 @@ function toTags(value: unknown): string[] {
 
 async function main() {
   const publishRoot = join(process.cwd(), PUBLISH_DIR);
-  const markdownFiles = await collectMarkdownFiles(publishRoot);
+  const glob = new Bun.Glob("**/*.md");
+  const markdownFiles = glob.scan({ cwd: publishRoot, absolute: true });
   const index: NoteIndexEntry[] = [];
 
-  for (const absolutePath of markdownFiles) {
-    const source = await readFile(absolutePath, "utf8");
+  for await (const absolutePath of markdownFiles) {
+    const source = await Bun.file(absolutePath).text();
     const { frontmatter } = parseFrontmatter(source);
 
     if (!isPublished(frontmatter)) continue;
@@ -165,7 +147,7 @@ async function main() {
     return a.title.localeCompare(b.title);
   });
 
-  await writeFile(OUTPUT_FILE, `${JSON.stringify(index, null, 2)}\n`, "utf8");
+  await Bun.write(OUTPUT_FILE, `${JSON.stringify(index, null, 2)}\n`);
   console.log(`Wrote ${index.length} entries to ${OUTPUT_FILE}`);
 }
 
