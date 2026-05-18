@@ -1,17 +1,5 @@
 [
   {
-    "slug": "example-note",
-    "title": "Example Note",
-    "description": "Short summary for the notes list.",
-    "date": "2026-05-15",
-    "tags": [
-      "nextjs",
-      "obsidian"
-    ],
-    "path": "publish/example-note.md",
-    "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/example-note.md"
-  },
-  {
     "slug": "lua-101",
     "title": "Lua 101",
     "description": "A crash course on lua programming language",
