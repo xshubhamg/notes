@@ -45,7 +45,12 @@ jobs:
           NOTES_REVALIDATE_SECRET: ${{ secrets.NOTES_REVALIDATE_SECRET }}
           PORTFOLIO_REVALIDATE_URL: ${{ secrets.PORTFOLIO_REVALIDATE_URL }}
         run: |
-          URL="${PORTFOLIO_REVALIDATE_URL:-https://xshubhamg.site/api/revalidate-notes}"
-          curl -fsS -X POST "$URL" \
+          test -n "$NOTES_REVALIDATE_SECRET" || {
+            echo "Missing NOTES_REVALIDATE_SECRET"
+            exit 1
+          }
+
+          URL="${PORTFOLIO_REVALIDATE_URL:-https://www.xshubhamg.site/api/revalidate-notes}"
+          curl -fsSL -X POST "$URL" \
             -H "Authorization: Bearer $NOTES_REVALIDATE_SECRET" \
             -H "Content-Type: application/json"
