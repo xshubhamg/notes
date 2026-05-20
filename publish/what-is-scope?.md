@@ -1,7 +1,7 @@
 ---
 title: What is Scope?
 description: An introduction to JavaScript scope, explaining how Engine, Compiler, and Scope collaborate to resolve variables across nested scopes.
-date: 19-05-2026
+date: 2026-05-19
 tags: [JavaScript, JIT, Scope]
 published: true
 slug: what-is-scope?

@@ -1,7 +1,7 @@
 ---
 title: JS Compiler Theory
 description: How JavaScript compilation works, from lexing and parsing to LHS/RHS lookups and ReferenceError vs TypeError.
-date: 19-05-2026
+date: 2026-05-19
 tags: [JavaScript, Engine, compiler, Intepreter]
 published: true
 slug: js-compiler-theory
