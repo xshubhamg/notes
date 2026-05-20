@@ -4,7 +4,7 @@ description: An introduction to JavaScript scope, explaining how Engine, Compile
 date: 2026-05-19
 tags: [JavaScript, JIT, Scope]
 published: true
-slug: what-is-scope?
+slug: what-is-scope
 ---
 
 # What is Scope?
