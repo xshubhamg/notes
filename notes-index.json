@@ -37,5 +37,32 @@
     ],
     "path": "publish/http.md",
     "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/http.md"
+  },
+  {
+    "slug": "js-compiler-theory",
+    "title": "JS Compiler Theory",
+    "description": "How JavaScript compilation works, from lexing and parsing to LHS/RHS lookups and ReferenceError vs TypeError.",
+    "date": "19-05-2026",
+    "tags": [
+      "JavaScript",
+      "Engine",
+      "compiler",
+      "Intepreter"
+    ],
+    "path": "publish/js-compiler-theory.md",
+    "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/js-compiler-theory.md"
+  },
+  {
+    "slug": "what-is-scope?",
+    "title": "What is Scope?",
+    "description": "An introduction to JavaScript scope, explaining how Engine, Compiler, and Scope collaborate to resolve variables across nested scopes.",
+    "date": "19-05-2026",
+    "tags": [
+      "JavaScript",
+      "JIT",
+      "Scope"
+    ],
+    "path": "publish/what-is-scope?.md",
+    "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/what-is-scope?.md"
   }
 ]
