@@ -1,3 +1,12 @@
+---
+title: Prototypal Inheritance
+description: An introduction to JavaScript prototypal inheritance, explaining how objects inherit properties via the prototype chain, the behavior of the for...in loop, and how 'this' operates with prototypes.
+date: 2026-07-08
+tags: [JavaScript, OOP, Prototypes]
+published: true
+slug: prototypal-inheritance
+---
+
 # `Prototypal inheritance`
 
 In JavaScript, objects have a special hidden property `Prototype`, that is either `null` or references
