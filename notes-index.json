@@ -14,7 +14,7 @@
     "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/js-compiler-theory.md"
   },
   {
-    "slug": "what-is-scope?",
+    "slug": "what-is-scope",
     "title": "What is Scope?",
     "description": "An introduction to JavaScript scope, explaining how Engine, Compiler, and Scope collaborate to resolve variables across nested scopes.",
     "date": "2026-05-19",
@@ -23,8 +23,8 @@
       "JIT",
       "Scope"
     ],
-    "path": "publish/what-is-scope?.md",
-    "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/what-is-scope?.md"
+    "path": "publish/what-is-scope.md",
+    "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/what-is-scope.md"
   },
   {
     "slug": "lua-101",
