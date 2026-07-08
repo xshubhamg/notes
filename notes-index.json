@@ -1,5 +1,18 @@
 [
   {
+    "slug": "prototypal-inheritance",
+    "title": "Prototypal Inheritance",
+    "description": "An introduction to JavaScript prototypal inheritance, explaining how objects inherit properties via the prototype chain, the behavior of the for...in loop, and how 'this' operates with prototypes.",
+    "date": "2026-07-08",
+    "tags": [
+      "JavaScript",
+      "OOP",
+      "Prototypes"
+    ],
+    "path": "publish/prototypal-inheritance.md",
+    "rawUrl": "https://raw.githubusercontent.com/xshubhamg/notes/main/publish/prototypal-inheritance.md"
+  },
+  {
     "slug": "js-compiler-theory",
     "title": "JS Compiler Theory",
     "description": "How JavaScript compilation works, from lexing and parsing to LHS/RHS lookups and ReferenceError vs TypeError.",
